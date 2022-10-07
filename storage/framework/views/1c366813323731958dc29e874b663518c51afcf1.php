@@ -130,12 +130,16 @@ $role_active_routes = ['admin_role_show','admin_post_role_show','admin_role_edit
 
           <?php endif; ?>
 
-          <li class="border-bottom <?php echo e(left_menu_active($page_active_routes)); ?> ">
-            <a href="<?php echo e(route('admin_page_show')); ?>" class="ai-icon "  aria-expanded="false">
-              <i class="fas fa-book"></i> 
-              <span class="nav-text">Pages</span>
-            </a>
-          </li>
+          <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->any(['page-list','page-add','page-edit','page-delete'])): ?>
+
+            <li class="border-bottom <?php echo e(left_menu_active($page_active_routes)); ?> ">
+              <a href="<?php echo e(route('admin_page_show')); ?>" class="ai-icon "  aria-expanded="false">
+                <i class="fas fa-book"></i> 
+                <span class="nav-text">Pages</span>
+              </a>
+            </li>
+
+          <?php endif; ?>
 
           <li class="border-bottom <?php echo e(left_menu_active($news_subs_active_routes)); ?> ">
             <a href="<?php echo e(route('admin_news_subs_show')); ?>" class="ai-icon "  aria-expanded="false">

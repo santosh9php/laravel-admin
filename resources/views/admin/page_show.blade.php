@@ -19,16 +19,18 @@
                        </div>
                      --}}  
                        <div class="col-lg-4">
-                          <form id="change_status_form" method="GET" action="{{ route('admin_page_show') }}">
-                              <label class="form-label">Change Status </label>
-                                <select class="form-control wide" id="change_status" name="status" >
-                                  <option value="">Choose Status</option>
-                                  <option value="active" >Inactive To Active</option>
-                                  <option value="inactive">Active To Inactive</option>
-                               </select>
-                               <input type="hidden" name="page_status_ids" id="page_status_ids" value="">
-                             
-                          </form>
+                            @can('page-edit')
+                                <form id="change_status_form" method="GET" action="{{ route('admin_page_show') }}">
+                                    <label class="form-label">Change Status </label>
+                                      <select class="form-control wide" id="change_status" name="status" >
+                                        <option value="">Choose Status</option>
+                                        <option value="active" >Inactive To Active</option>
+                                        <option value="inactive">Active To Inactive</option>
+                                     </select>
+                                     <input type="hidden" name="page_status_ids" id="page_status_ids" value="">
+                                   
+                                </form>
+                           @endcan
                        </div>
                        <div class="col-lg-4">&nbsp;</div>
                        <div class="col-lg-4">
@@ -94,10 +96,21 @@
                                  </td>
                                  <td style="text-align:center;">
                                     <div class="d-flex">
-                                       <a href="{{route('admin_page_edit',[$page->id])}}"  class="btn btn-primary shadow btn-xs sharp me-1 editModal"><i class="fas fa-pencil-alt"></i></a>
-                                       @if($page->slug != 'welcome-to-sk-distributors' && $page->slug != 'about-us' && $page->slug != 'contact-us')
-                                       <a href=""  data-page="{{ $page->id }}" data-toggle="modal" data-target="#delete_page" class="btn btn-danger shadow btn-xs sharp page_delete"><i class="fa fa-trash"></i></a>
-                                       @endif
+
+                                       @can('page-edit')
+
+                                          <a href="{{route('admin_page_edit',[$page->id])}}"  class="btn btn-primary shadow btn-xs sharp me-1 editModal"><i class="fas fa-pencil-alt"></i></a>
+                                          
+                                       @endcan
+
+                                       @can('page-delete')
+
+                                          @if($page->slug != 'welcome-to-sk-distributors' && $page->slug != 'about-us' && $page->slug != 'contact-us')
+                                          <a href=""  data-page="{{ $page->id }}" data-toggle="modal" data-target="#delete_page" class="btn btn-danger shadow btn-xs sharp page_delete"><i class="fa fa-trash"></i></a>
+                                          @endif
+
+                                       @endcan
+
                                     </div>
                                  </td>
                               </tr>

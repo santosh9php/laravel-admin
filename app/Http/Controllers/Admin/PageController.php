@@ -67,6 +67,11 @@ class PageController extends Controller
         $this->page_slug_error =__("adminMsg.page_slug_error");
 
         $this->destinationPath = 'public/media/page';
+
+        $this->middleware('permission:page-list|page-add|page-edit|page-delete', ['only' => ['index']]);
+        $this->middleware('permission:page-add', ['only' => ['add_page_form','add_page']]);
+        $this->middleware('permission:page-edit', ['only' => ['edit_form','edit_page_save']]);
+        $this->middleware('permission:page-delete', ['only' => ['destroy']]);
     }
 
     public function index(Request $request)

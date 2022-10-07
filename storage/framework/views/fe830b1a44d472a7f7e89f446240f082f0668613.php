@@ -18,7 +18,9 @@
             </div>
 
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
-               <a class="btn btn-success page_add_button" href="<?php echo e(route('admin_page_form_show')); ?>">Add Page</a> 
+               <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('page-add')): ?>
+                  <a class="btn btn-success page_add_button" href="<?php echo e(route('admin_page_form_show')); ?>">Add Page</a> 
+               <?php endif; ?>
             </div>
          </div>
 

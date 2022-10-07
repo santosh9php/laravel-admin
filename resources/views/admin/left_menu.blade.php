@@ -130,12 +130,16 @@ $role_active_routes = ['admin_role_show','admin_post_role_show','admin_role_edit
 
           @endcan
 
-          <li class="border-bottom {{left_menu_active($page_active_routes)}} ">
-            <a href="{{route('admin_page_show')}}" class="ai-icon "  aria-expanded="false">
-              <i class="fas fa-book"></i> 
-              <span class="nav-text">Pages</span>
-            </a>
-          </li>
+          @canany(['page-list','page-add','page-edit','page-delete'])
+
+            <li class="border-bottom {{left_menu_active($page_active_routes)}} ">
+              <a href="{{route('admin_page_show')}}" class="ai-icon "  aria-expanded="false">
+                <i class="fas fa-book"></i> 
+                <span class="nav-text">Pages</span>
+              </a>
+            </li>
+
+          @endcan
 
           <li class="border-bottom {{left_menu_active($news_subs_active_routes)}} ">
             <a href="{{route('admin_news_subs_show')}}" class="ai-icon "  aria-expanded="false">
