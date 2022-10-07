@@ -18,7 +18,9 @@
                      
                   </div>
                   <div class="mb-3 col-md-12">
-                     <label class="form-label">Permissions</label>
+                     <?php if($role->name != 'Registered User'): ?>
+                        <label class="form-label">Permissions</label>
+                     <?php endif; ?>
                      <div style="font-weight:bold;">
                         <?php
                            if($role->name == 'Super Admin'){
