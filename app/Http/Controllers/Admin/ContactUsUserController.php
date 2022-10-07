@@ -32,6 +32,9 @@ class ContactUsUserController extends Controller
 
         $this->cont_users_bulk_delete =__("adminMsg.cont_users_bulk_delete");
 
+        $this->middleware('permission:contact-us-enquiry-list|contact-us-enquiry-delete', ['only' => ['index']]);
+        $this->middleware('permission:contact-us-enquiry-delete', ['only' => ['destroy']]);
+
     }
 
     public function index(Request $request)

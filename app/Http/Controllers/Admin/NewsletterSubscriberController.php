@@ -32,6 +32,9 @@ class NewsletterSubscriberController extends Controller
 
         $this->news_subs_bulk_delete =__("adminMsg.news_subs_bulk_delete");
 
+        $this->middleware('permission:newsletter-list|newsletter-delete', ['only' => ['index']]);
+        $this->middleware('permission:newsletter-delete', ['only' => ['destroy']]);
+
     }
 
     public function index(Request $request)

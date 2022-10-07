@@ -4,6 +4,7 @@
                <div class="card-header">
                    <div class="row">
                         <div class="col-lg-4">
+                           <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('contact-us-enquiry-delete')): ?>
                              <form id="bulk_delete_form" method="GET" action="<?php echo e(route('admin_cont_users_show')); ?>">
                                   <label class="form-label">Bulk Delete </label>
                                    <select class=" form-control wide" id="bulk_delete" name="status" >
@@ -12,6 +13,7 @@
                                   </select>
                                   <input type="hidden" name="cont_users_bulk_delete_ids" id="cont_users_bulk_delete_ids" value=""> 
                              </form>
+                           <?php endif; ?>
                         </div>
                         <div class="col-lg-4">
                                <form method="GET" action="<?php echo e(route('admin_cont_users_show')); ?>">
@@ -84,7 +86,12 @@
                                     <a href=""  data-cont_users="<?php echo e($cont_users->id); ?>" data-toggle="modal" data-target="#viewContUsersModal<?php echo e($cont_users->id); ?>"  title="view details"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                  </td>
                                  <td style="text-align:center;"> 
+
+                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('contact-us-enquiry-delete')): ?>
+                                    
                                        <a href=""  data-cont_users="<?php echo e($cont_users->id); ?>" data-toggle="modal" data-target="#delete_cont_users" class="btn btn-danger shadow btn-xs sharp cont_users_delete"><i class="fa fa-trash"></i></a>
+
+                                    <?php endif; ?>
                                     
                                  </td>
                               </tr>

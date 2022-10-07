@@ -4,6 +4,7 @@
                <div class="card-header">
                    <div class="row">
                         <div class="col-lg-4">
+                           @can('contact-us-enquiry-delete')
                              <form id="bulk_delete_form" method="GET" action="{{ route('admin_cont_users_show') }}">
                                   <label class="form-label">Bulk Delete </label>
                                    <select class=" form-control wide" id="bulk_delete" name="status" >
@@ -12,6 +13,7 @@
                                   </select>
                                   <input type="hidden" name="cont_users_bulk_delete_ids" id="cont_users_bulk_delete_ids" value=""> 
                              </form>
+                           @endcan
                         </div>
                         <div class="col-lg-4">
                                <form method="GET" action="{{ route('admin_cont_users_show') }}">
@@ -87,7 +89,12 @@
                                     <a href=""  data-cont_users="{{ $cont_users->id }}" data-toggle="modal" data-target="#viewContUsersModal{{ $cont_users->id }}"  title="view details"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                  </td>
                                  <td style="text-align:center;"> 
+
+                                    @can('contact-us-enquiry-delete')
+                                    
                                        <a href=""  data-cont_users="{{ $cont_users->id }}" data-toggle="modal" data-target="#delete_cont_users" class="btn btn-danger shadow btn-xs sharp cont_users_delete"><i class="fa fa-trash"></i></a>
+
+                                    @endcan
                                     
                                  </td>
                               </tr>

@@ -5,16 +5,18 @@
 
                    <div class="row">
                        <div class="col-lg-4">
-                            <form id="bulk_delete_form" method="GET" action="{{ route('admin_news_subs_show') }}">
-                            <label class="form-label">Bulk Delete </label>
-                            <div>
-                                <select class=" form-control wide" id="bulk_delete" name="status" >
-                                    <option value="">Choose Action</option>
-                                    <option value="bulk_delete" >Bulk Delete</option>
-                                </select>
-                                <input type="hidden" name="news_subs_bulk_delete_ids" id="news_subs_bulk_delete_ids" value="">
-                            </div>
-                            </form>
+                           @can('newsletter-delete')
+                               <form id="bulk_delete_form" method="GET" action="{{ route('admin_news_subs_show') }}">
+                                  <label class="form-label">Bulk Delete </label>
+                                  <div>
+                                      <select class=" form-control wide" id="bulk_delete" name="status" >
+                                          <option value="">Choose Action</option>
+                                          <option value="bulk_delete" >Bulk Delete</option>
+                                      </select>
+                                      <input type="hidden" name="news_subs_bulk_delete_ids" id="news_subs_bulk_delete_ids" value="">
+                                  </div>
+                               </form>
+                           @endcan
                        </div>
                        <div class="col-lg-4">
                            <form method="GET" action="{{ route('admin_news_subs_show') }}">
@@ -77,9 +79,13 @@
                                     <div class="d-flex align-items-center">{{date('j F, Y h:i:s A',strtotime($news_subs->created_at))}}</div>
                                  </td>
                                  
-                                 <td style="text-align:center;"> 
+                                 <td style="text-align:center;">
+
+                                    @can('newsletter-delete') 
                                        
                                        <a href=""  data-news_subs="{{ $news_subs->id }}" data-toggle="modal" data-target="#delete_news_subs" class="btn btn-danger shadow btn-xs sharp news_subs_delete"><i class="fa fa-trash"></i></a>
+
+                                    @endcan
                                    
                                  </td>
                               </tr>

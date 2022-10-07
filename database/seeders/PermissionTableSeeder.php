@@ -17,64 +17,9 @@ class PermissionTableSeeder extends Seeder
     {
         //
         $permissions = [
-           'admin-login',
-
-           'role-list',
-           'role-add',
-           'role-edit',
-           'role-delete',
-
-           'user-list',
-           'user-change-status',
-           'user-add',
-           'user-edit',
-           'user-delete',
-
-           'category-list',
-           'category-change-status',
-           'category-add',
-           'category-edit',
-           'category-delete',
-
-           'product-list',
-           'product-change-status',
-           'product-add',
-           'product-edit',
-           'product-delete',
-
-           'blog-category-list',
-           'blog-category-change-status',
-           'blog-category-add',
-           'blog-category-edit',
-           'blog-category-delete',
-
-           'blog-post-list',
-           'blog-post-change-status',
-           'blog-post-add',
-           'blog-post-edit',
-           'blog-post-delete',
-
-           'faq-category-list',
-           'faq-category-change-status',
-           'faq-category-add',
-           'faq-category-edit',
-           'faq-category-delete',
-
-           'faq-list',
-           'faq-change-status',
-           'faq-add',
-           'faq-edit',
-           'faq-delete',
-
-           'page-list',
-           'page-change-status',
-           'page-add',
-           'page-edit',
-           'page-delete',
-
-           'newsletter-delete',
-
-           'contact-us-enquiry-delete',
+           
+           'newsletter-list',
+           'contact-us-enquiry-list'
 
            
         ];

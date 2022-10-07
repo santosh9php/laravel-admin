@@ -141,21 +141,28 @@ $role_active_routes = ['admin_role_show','admin_post_role_show','admin_role_edit
 
           @endcan
 
-          <li class="border-bottom {{left_menu_active($news_subs_active_routes)}} ">
-            <a href="{{route('admin_news_subs_show')}}" class="ai-icon "  aria-expanded="false">
-              <i class="fa fa-envelope"></i>
-              <span class="nav-text">Newsletter Subscribers</span>
-            </a>
-          </li>
 
-          <li class="border-bottom {{left_menu_active($cont_users_active_routes)}} ">
-            <a href="{{route('admin_cont_users_show')}}" class="ai-icon "  aria-expanded="false">
-              <i class="fas fa-address-book"></i> 
-              <span class="nav-text">Contact Us </span>
-            </a>
-          </li>
+          @canany(['newsletter-list', 'newsletter-delete'])
 
+            <li class="border-bottom {{left_menu_active($news_subs_active_routes)}} ">
+              <a href="{{route('admin_news_subs_show')}}" class="ai-icon "  aria-expanded="false">
+                <i class="fa fa-envelope"></i>
+                <span class="nav-text">Newsletter Subscribers</span>
+              </a>
+            </li>
 
+          @endcan
+
+          @canany(['contact-us-enquiry-list', 'contact-us-enquiry-delete'])
+
+            <li class="border-bottom {{left_menu_active($cont_users_active_routes)}} ">
+              <a href="{{route('admin_cont_users_show')}}" class="ai-icon "  aria-expanded="false">
+                <i class="fas fa-address-book"></i> 
+                <span class="nav-text">Contact Us </span>
+              </a>
+            </li>
+
+          @endcan
 
         </ul>
         

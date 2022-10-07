@@ -141,21 +141,28 @@ $role_active_routes = ['admin_role_show','admin_post_role_show','admin_role_edit
 
           <?php endif; ?>
 
-          <li class="border-bottom <?php echo e(left_menu_active($news_subs_active_routes)); ?> ">
-            <a href="<?php echo e(route('admin_news_subs_show')); ?>" class="ai-icon "  aria-expanded="false">
-              <i class="fa fa-envelope"></i>
-              <span class="nav-text">Newsletter Subscribers</span>
-            </a>
-          </li>
 
-          <li class="border-bottom <?php echo e(left_menu_active($cont_users_active_routes)); ?> ">
-            <a href="<?php echo e(route('admin_cont_users_show')); ?>" class="ai-icon "  aria-expanded="false">
-              <i class="fas fa-address-book"></i> 
-              <span class="nav-text">Contact Us </span>
-            </a>
-          </li>
+          <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->any(['newsletter-list', 'newsletter-delete'])): ?>
 
+            <li class="border-bottom <?php echo e(left_menu_active($news_subs_active_routes)); ?> ">
+              <a href="<?php echo e(route('admin_news_subs_show')); ?>" class="ai-icon "  aria-expanded="false">
+                <i class="fa fa-envelope"></i>
+                <span class="nav-text">Newsletter Subscribers</span>
+              </a>
+            </li>
 
+          <?php endif; ?>
+
+          <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->any(['contact-us-enquiry-list', 'contact-us-enquiry-delete'])): ?>
+
+            <li class="border-bottom <?php echo e(left_menu_active($cont_users_active_routes)); ?> ">
+              <a href="<?php echo e(route('admin_cont_users_show')); ?>" class="ai-icon "  aria-expanded="false">
+                <i class="fas fa-address-book"></i> 
+                <span class="nav-text">Contact Us </span>
+              </a>
+            </li>
+
+          <?php endif; ?>
 
         </ul>
         
