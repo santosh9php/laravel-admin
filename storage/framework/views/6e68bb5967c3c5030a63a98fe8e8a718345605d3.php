@@ -1,0 +1,1 @@
+fghgfhgfhgf<?php /**PATH C:\xampp\htdocs\bathroom_product\resources\views/welcome111.blade.php ENDPATH**/ ?>
