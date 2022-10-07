@@ -133,7 +133,7 @@ $role_active_routes = ['admin_role_show','admin_post_role_show','admin_role_edit
           <li class="border-bottom {{left_menu_active($page_active_routes)}} ">
             <a href="{{route('admin_page_show')}}" class="ai-icon "  aria-expanded="false">
               <i class="fas fa-book"></i> 
-                <span class="nav-text">Pages</span>
+                <span class="nav-text">APages</span>
             </a>
           </li>
 
