@@ -23,19 +23,11 @@ return new class extends Migration
             $table->timestamp('mobile_verified_at')->nullable();
             $table->string('country')->nullable();
             $table->string('state')->nullable();
-            $table->string('gst_no');
-            $table->string('gst_certificate')->nullable();
-            $table->string('pan_no');
-            $table->string('pan_card')->nullable();
-            $table->string('id_proof');
-            $table->string('id_proof_document')->nullable();
-            $table->string('company_name')->nullable();
-
+            
             $table->string('password');
             $table->string('country_code',15)->nullable();
             $table->string('mobile',30)->unique();
             $table->rememberToken();
-            $table->enum('role', ['admin', 'dealer', 'customer'])->default('customer');
             $table->enum('gender', ['m', 'f'])->default('m');
             $table->mediumText('address')->nullable();
             $table->string('photo')->nullable();
